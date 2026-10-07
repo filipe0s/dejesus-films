@@ -1,0 +1,78 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "24"
+
+# Regras preparadas para a futura conexão do domínio; não alteram DNS.
+[[redirects]]
+  from = "http://fdejesus.com.br/*"
+  to = "https://www.fdejesus.com.br/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://fdejesus.com.br/*"
+  to = "https://www.fdejesus.com.br/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://www.fdejesus.com.br/*"
+  to = "https://www.fdejesus.com.br/:splat"
+  status = 301
+  force = true
+
+# Página única com âncoras: não precisa de fallback SPA /* -> /index.html.
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    X-Frame-Options = "DENY"
+    Content-Security-Policy = "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; media-src 'self' https:; connect-src 'self'; font-src 'self'; frame-src https://www.youtube-nocookie.com https://player.vimeo.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'none'"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=(), fullscreen=(self), autoplay=(self)"
+    Strict-Transport-Security = "max-age=31536000"
+
+# Nomes de arquivos sem hash: evitar cache immutable que retenha mídia antiga.
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=3600, must-revalidate"
+
+[[headers]]
+  for = "/"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/index.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/app.js"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/styles.css"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/data/*"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/robots.txt"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/sitemap.xml"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"

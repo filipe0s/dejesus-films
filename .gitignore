@@ -1,0 +1,27 @@
+node_modules/
+dist/
+.test-output/
+*.log
+
+.media-tools/
+
+# Originais e arquivos locais: nunca versionar/publicar.
+/materiais/
+.netlify/
+.env
+.env.*
+!.env.example
+.npmrc
+.cache/
+coverage/
+tmp/
+*.tmp
+*.partial.*
+*.pem
+*.key
+*.p12
+*.pfx
+credentials*.json
+*secrets*.json
+.DS_Store
+Thumbs.db

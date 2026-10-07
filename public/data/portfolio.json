@@ -1,0 +1,354 @@
+{
+  "site": {
+    "brand": "deJesus Films",
+    "professional": "Filipe de Jesus",
+    "whatsapp": "5575988796387",
+    "preview": false,
+    "domain": "https://www.fdejesus.com.br",
+    "showreel": {
+      "src": "assets/videos/showreel-desktop.mp4",
+      "mobileSrc": "assets/videos/showreel-mobile.mp4",
+      "poster": "assets/covers/showreel.webp",
+      "sourceFile": "materiais/01-inicio/01-showreel/showreel.mp4.mp4"
+    },
+    "portrait": {
+      "src": "assets/photos/filipe.webp",
+      "alt": "Filipe de Jesus",
+      "sourceFile": "materiais/04-sobre/01-filipe/filipe.jpg"
+    },
+    "contentApproved": true,
+    "contentApprovalDate": "2026-10-07"
+  },
+  "contactMessages": {
+    "geral": "Olá, Filipe! Conheci a deJesus Films e quero conversar sobre um projeto.",
+    "marcas": "Olá, Filipe! Quero conversar sobre produção de conteúdo para minha empresa ou atuação profissional.",
+    "eventos": "Olá, Filipe! Quero conversar sobre cobertura realtime e filmes para meu evento."
+  },
+  "groups": [
+    {
+      "id": "marcas",
+      "number": "01",
+      "title": "Marcas e profissionais",
+      "description": "Vídeos e conteúdo para apresentar sua marca, seu trabalho e suas ideias."
+    },
+    {
+      "id": "eventos",
+      "number": "02",
+      "title": "Cobertura realtime + filmes de eventos",
+      "description": "Stories durante o evento. Filmes e melhores momentos depois."
+    }
+  ],
+  "projects": [
+    {
+      "id": "marcas",
+      "title": "Vídeo para marcas",
+      "service": "Filmmaker mobile",
+      "description": "Vídeo fornecido para a frente de marcas e profissionais.",
+      "format": "9:16",
+      "cover": "assets/covers/marcas.webp",
+      "coverAlt": "Frame do vídeo fornecido: Vídeo para marcas",
+      "media": {
+        "type": "video",
+        "src": "assets/videos/marcas.mp4"
+      },
+      "client": null,
+      "role": null,
+      "metadataPending": true,
+      "sourceFile": "materiais/02-portfolio/01-video-marcas/video-marcas.mp4.mp4",
+      "durationSeconds": 51.502,
+      "group": "marcas",
+      "slotId": "previa-reel",
+      "order": 1
+    },
+    {
+      "id": "campanha",
+      "title": "Criativo de anúncio",
+      "service": "Anúncios + gestão de tráfego",
+      "description": "Peça em vídeo fornecida como exemplo de criativo de anúncio.",
+      "format": "9:16",
+      "cover": "assets/covers/campanha.webp",
+      "coverAlt": "Frame do vídeo fornecido: Criativo de anúncio",
+      "media": {
+        "type": "video",
+        "src": "assets/videos/campanha.mp4"
+      },
+      "client": null,
+      "role": null,
+      "metadataPending": true,
+      "sourceFile": "materiais/02-portfolio/03-anuncio/anuncio.mp4",
+      "durationSeconds": 51.735,
+      "group": "marcas",
+      "slotId": "previa-criativo",
+      "order": 3
+    },
+    {
+      "id": "realtime",
+      "title": "Stories durante o evento",
+      "service": "Storymaker",
+      "description": "Exemplo fornecido de stories produzidos durante uma cobertura.",
+      "format": "9:16",
+      "cover": "assets/covers/realtime.webp",
+      "coverAlt": "Frame do vídeo fornecido: Stories durante o evento",
+      "media": {
+        "type": "video",
+        "src": "assets/videos/realtime.mp4"
+      },
+      "client": null,
+      "role": null,
+      "metadataPending": true,
+      "sourceFile": "materiais/02-portfolio/04-stories-realtime/stories-realtime.mp4.mp4",
+      "durationSeconds": 25.519,
+      "group": "eventos",
+      "slotId": "previa-realtime",
+      "order": 1,
+      "deliveryPhase": "during"
+    },
+    {
+      "id": "evento-vertical",
+      "title": "Filme de evento · vertical",
+      "service": "Filmmaker mobile",
+      "description": "Filme vertical fornecido como exemplo de edição após o evento.",
+      "format": "9:16",
+      "cover": "assets/covers/evento-vertical.webp",
+      "coverAlt": "Frame do vídeo fornecido: Filme de evento · vertical",
+      "media": {
+        "type": "video",
+        "src": "assets/videos/evento-vertical.mp4"
+      },
+      "client": null,
+      "role": null,
+      "metadataPending": true,
+      "sourceFile": "materiais/02-portfolio/05-filme-evento/filme-evento.mp4.MP4",
+      "durationSeconds": 52.408,
+      "group": "eventos",
+      "slotId": "previa-evento",
+      "order": 2,
+      "deliveryPhase": "after"
+    },
+    {
+      "id": "evento-horizontal",
+      "title": "Filme de evento · horizontal",
+      "service": "Filmmaker mobile",
+      "description": "Filme horizontal fornecido como exemplo de edição após o evento.",
+      "format": "16:9",
+      "cover": "assets/covers/evento-horizontal.webp",
+      "coverAlt": "Frame do vídeo fornecido: Filme de evento · horizontal",
+      "media": {
+        "type": "video",
+        "src": "assets/videos/evento-horizontal.mp4"
+      },
+      "client": null,
+      "role": null,
+      "metadataPending": true,
+      "sourceFile": "materiais/02-portfolio/05-filme-evento/filme-horizontal-evento.mp4.mov",
+      "durationSeconds": 100.218,
+      "group": "eventos",
+      "slotId": "previa-evento",
+      "order": 3,
+      "deliveryPhase": "after"
+    },
+    {
+      "id": "melhores-momentos",
+      "title": "Melhores momentos",
+      "service": "Edição de vídeos",
+      "description": "Vídeo fornecido de melhores momentos editados após o evento.",
+      "format": "9:16",
+      "cover": "assets/covers/melhores-momentos.webp",
+      "coverAlt": "Frame do vídeo fornecido: Melhores momentos",
+      "media": {
+        "type": "video",
+        "src": "assets/videos/melhores-momentos.mp4"
+      },
+      "client": null,
+      "role": null,
+      "metadataPending": true,
+      "sourceFile": "materiais/02-portfolio/06-melhores-momentos/melhores-momentos.mp4.mp4",
+      "durationSeconds": 55.775,
+      "group": "eventos",
+      "slotId": "previa-momentos",
+      "order": 4,
+      "deliveryPhase": "after"
+    }
+  ],
+  "previewSlots": [
+    {
+      "id": "previa-institucional",
+      "group": "marcas",
+      "title": "Filme institucional",
+      "format": "9:16",
+      "service": "Filmmaker mobile",
+      "description": "Espaço temporário para um filme institucional real. A proporção será ajustada ao material fornecido.",
+      "motif": "film",
+      "label": "FILME / INSTITUCIONAL",
+      "order": 2
+    }
+  ],
+  "services": [
+    {
+      "id": "storymaker",
+      "name": "Storymaker",
+      "audience": "Eventos e rotina de marcas",
+      "description": "Stories com produção ágil durante o evento ou a rotina da marca, conforme o escopo contratado.",
+      "delivery": "Conteúdo para stories durante a cobertura.",
+      "tags": [
+        "COBERTURA",
+        "TEMPO REAL"
+      ],
+      "exampleProjectId": "servico-storymaker",
+      "message": "Olá, Filipe! Vi o serviço de Storymaker no seu site e quero conversar sobre uma cobertura para stories."
+    },
+    {
+      "id": "filmmaker",
+      "name": "Filmmaker mobile",
+      "audience": "Marcas, profissionais e eventos",
+      "description": "Produção de vídeos com captação mobile, direção e acabamento compatíveis com o seu projeto.",
+      "delivery": "Vídeos comerciais, institucionais ou filmes de eventos, conforme o escopo.",
+      "tags": [
+        "CAPTAÇÃO",
+        "PRODUÇÃO"
+      ],
+      "exampleProjectId": "servico-filmmaker",
+      "message": "Olá, Filipe! Vi o serviço de Filmmaker mobile no seu site e quero conversar sobre a produção de um vídeo."
+    },
+    {
+      "id": "edicao",
+      "name": "Edição de vídeos",
+      "audience": "Quem já tem material gravado",
+      "description": "Seu material gravado ganha ritmo, narrativa, tratamento e finalização.",
+      "delivery": "Vídeos editados nos formatos definidos para o projeto.",
+      "tags": [
+        "NARRATIVA",
+        "FINALIZAÇÃO"
+      ],
+      "exampleProjectId": "servico-edicao",
+      "message": "Olá, Filipe! Vi o serviço de edição de vídeos no seu site e quero conversar sobre um projeto."
+    },
+    {
+      "id": "social",
+      "name": "Social media",
+      "audience": "Empresas e profissionais",
+      "description": "Planejamento e produção de conteúdo para a presença digital da sua marca.",
+      "delivery": "Conteúdos e planejamento com entregas definidas na proposta.",
+      "tags": [
+        "PLANEJAMENTO",
+        "CONTEÚDO"
+      ],
+      "exampleProjectId": "servico-social",
+      "message": "Olá, Filipe! Vi o serviço de Social media no seu site e quero conversar sobre a presença digital da minha marca."
+    },
+    {
+      "id": "anuncios",
+      "name": "Anúncios + gestão de tráfego",
+      "audience": "Empresas e profissionais",
+      "description": "Criação de peças em vídeo ou imagem + gestão de tráfego: planejamento, acompanhamento e otimização de campanhas conforme o escopo contratado.",
+      "delivery": "Criativos e gestão de campanhas. Honorários e investimento em mídia são definidos separadamente na proposta.",
+      "tags": [
+        "CRIAÇÃO DE PEÇAS",
+        "GESTÃO DE TRÁFEGO"
+      ],
+      "exampleProjectId": "servico-anuncios",
+      "message": "Olá, Filipe! Quero conversar sobre anúncios com criação de peças e gestão de tráfego para minha marca."
+    }
+  ],
+  "pending": [
+    "Vídeo institucional",
+    "Títulos, clientes quando aplicável e participação confirmada de Filipe nos trabalhos enviados"
+  ],
+  "serviceExamples": [
+    {
+      "id": "servico-storymaker",
+      "title": "Storymaker",
+      "service": "Storymaker",
+      "description": "Vídeo fornecido como exemplo do serviço de Storymaker.",
+      "format": "9:16",
+      "cover": "assets/covers/servico-storymaker.webp",
+      "coverAlt": "Frame do vídeo fornecido: Storymaker",
+      "media": {
+        "type": "video",
+        "src": "assets/videos/servico-storymaker.mp4"
+      },
+      "client": null,
+      "role": null,
+      "metadataPending": true,
+      "sourceFile": "materiais/03-servicos/01-storymaker/storymaker.mp4.mp4",
+      "durationSeconds": 15.953,
+      "serviceId": "storymaker"
+    },
+    {
+      "id": "servico-filmmaker",
+      "title": "Filmmaker mobile",
+      "service": "Filmmaker mobile",
+      "description": "Vídeo fornecido como exemplo do serviço de Filmmaker mobile.",
+      "format": "9:16",
+      "cover": "assets/covers/servico-filmmaker.webp",
+      "coverAlt": "Frame do vídeo fornecido: Filmmaker mobile",
+      "media": {
+        "type": "video",
+        "src": "assets/videos/servico-filmmaker.mp4"
+      },
+      "client": null,
+      "role": null,
+      "metadataPending": true,
+      "sourceFile": "materiais/03-servicos/02-filmmaker/filmmaker.mp4",
+      "durationSeconds": 56.913,
+      "serviceId": "filmmaker"
+    },
+    {
+      "id": "servico-edicao",
+      "title": "Edição de vídeos",
+      "service": "Edição de vídeos",
+      "description": "Vídeo fornecido como exemplo do serviço de Edição de vídeos.",
+      "format": "9:16",
+      "cover": "assets/covers/servico-edicao.webp",
+      "coverAlt": "Frame do vídeo fornecido: Edição de vídeos",
+      "media": {
+        "type": "video",
+        "src": "assets/videos/servico-edicao.mp4"
+      },
+      "client": null,
+      "role": null,
+      "metadataPending": true,
+      "sourceFile": "materiais/03-servicos/03-edicao/edicao.mp4.MP4",
+      "durationSeconds": 64.181,
+      "serviceId": "edicao"
+    },
+    {
+      "id": "servico-social",
+      "title": "Social media",
+      "service": "Social media",
+      "description": "Vídeo fornecido como exemplo do serviço de Social media.",
+      "format": "9:16",
+      "cover": "assets/covers/servico-social.webp",
+      "coverAlt": "Frame do vídeo fornecido: Social media",
+      "media": {
+        "type": "video",
+        "src": "assets/videos/servico-social.mp4"
+      },
+      "client": null,
+      "role": null,
+      "metadataPending": true,
+      "sourceFile": "materiais/03-servicos/04-social-media/social-media.mp4.mp4",
+      "durationSeconds": 49.389,
+      "serviceId": "social"
+    },
+    {
+      "id": "servico-anuncios",
+      "title": "Anúncios + gestão de tráfego",
+      "service": "Anúncios + gestão de tráfego",
+      "description": "Vídeo fornecido como exemplo do serviço de Anúncios + gestão de tráfego.",
+      "format": "9:16",
+      "cover": "assets/covers/servico-anuncios.webp",
+      "coverAlt": "Frame do vídeo fornecido: Anúncios + gestão de tráfego",
+      "media": {
+        "type": "video",
+        "src": "assets/videos/servico-anuncios.mp4"
+      },
+      "client": null,
+      "role": null,
+      "metadataPending": true,
+      "sourceFile": "materiais/03-servicos/05-anuncios-trafego/anuncios-trafego.mp4.mp4",
+      "durationSeconds": 52.687,
+      "serviceId": "anuncios"
+    }
+  ]
+}
