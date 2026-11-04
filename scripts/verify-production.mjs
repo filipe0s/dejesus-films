@@ -25,6 +25,10 @@ export async function verifyProduction(){
   assert(robots.includes('Allow: /')&&!robots.includes('Disallow: /'));
   assert(robots.includes('Sitemap: '+domain+'/sitemap.xml'));
   assert(sitemap.includes('<loc>'+domain+'/</loc>'));
+  const briefing=await readFile('dist/briefing-evento/index.html','utf8');
+  assert(briefing.includes('<meta name="robots" content="noindex,nofollow">'));
+  assert(!html.includes('briefing-evento'),'O briefing não deve aparecer no portfólio');
+  assert(!sitemap.includes('briefing-evento'),'O briefing não deve entrar no sitemap');
   for(const p of [...data.projects,...data.serviceExamples]){
     const original=[...source.projects,...source.serviceExamples].find(item=>item.id===p.id);
     for(const key of ['title','description','client','role','media','cover'])assert.deepEqual(p[key],original[key]);

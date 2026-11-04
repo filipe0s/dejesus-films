@@ -1,0 +1,11 @@
+.share-card{background:#141416;border:1px solid #343437;border-radius:9px;padding:28px;margin-top:32px}
+.share-card h2{font-family:Georgia,'Times New Roman',serif;font-size:27px;font-weight:400;line-height:1.25;margin:0 0 8px}
+.share-card p{color:#a8a7a4;font-size:14px;margin:0}
+.share-card .review-actions{margin-top:24px}
+.share-card .copy-status{margin-top:15px;min-height:21px;color:#ffb300}
+.button:disabled{opacity:.6;cursor:wait;transform:none}
+.field select{width:100%;background:#141416;border:1px solid #444447;border-radius:7px;color:#f4f2ed;min-height:51px;padding:13px 16px;font:inherit;outline:none}
+.field select:focus{border-color:#ffb300;box-shadow:0 0 0 3px rgba(255,179,0,.12)}
+.field select[aria-invalid=true]{border-color:#ff9d89}
+.field select option{background:#141416;color:#f4f2ed}
+@media(max-width:560px){.share-card{padding:21px}.share-card h2{font-size:24px}}

@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b0b0d">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="referrer" content="no-referrer">
+  <meta name="description" content="Briefing de evento deJesus Films: informe os detalhes da cobertura e compartilhe suas preferências para o filme.">
+  <title>Briefing de Evento | deJesus Films</title>
+  <link rel="icon" href="assets/icone-d.png" type="image/png">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="delivery.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="site-shell">
+    <header class="brand-header">
+      <img class="brand-logo" src="assets/logo-dejesus-films.png" alt="deJesus Films" width="1080" height="1080">
+      <span class="brand-divider" aria-hidden="true"></span>
+      <span class="brand-caption">BRIEFING DE EVENTO</span>
+    </header>
+
+    <main>
+      <div id="form-view">
+        <section class="intro" aria-labelledby="page-title">
+          <p class="eyebrow">O FILME COMEÇA AQUI</p>
+          <h1 id="page-title">Cada evento tem<br><em>uma história.</em></h1>
+          <p class="intro-copy">Contem os detalhes do evento e o que merece atenção na cobertura. As perguntas se adaptam ao tipo de celebração para que o filme represente o que é importante para vocês.</p>
+        </section>
+
+        <div class="form-layout">
+          <aside class="progress-panel" aria-label="Progresso do formulário">
+            <div class="progress-topline"><span>SEU PROGRESSO</span><strong id="progress-count">01 / 04</strong></div>
+            <div class="progress-track" role="progressbar" aria-label="Progresso" aria-valuemin="0" aria-valuemax="4" aria-valuenow="1"><span id="progress-fill"></span></div>
+            <ol class="step-list" id="step-list">
+              <li class="current" aria-current="step"><span class="step-number">01</span><span>Confirmação do evento</span></li>
+              <li><span class="step-number">02</span><span>Música e estilo</span></li>
+              <li><span class="step-number">03</span><span>Preferências importantes</span></li>
+              <li><span class="step-number">04</span><span>Informações finais</span></li>
+            </ol>
+            <p class="privacy-note">O rascunho fica temporariamente neste navegador. Ao finalizar, o briefing em PDF será enviado à deJesus Films. Compartilhar uma cópia pelo WhatsApp é opcional.</p>
+          </aside>
+
+          <form id="briefing-form" novalidate>
+            <section class="form-step" data-step="0" aria-labelledby="step-1-title">
+              <div class="section-heading"><span class="section-index">01 / 04</span><h2 id="step-1-title" tabindex="-1">Confirmação do evento</h2><p>Vamos começar com as informações essenciais da cobertura.</p></div>
+              <div class="field"><label for="eventType">Tipo de evento <span class="required">*</span></label><select id="eventType" name="eventType" required><option value="">Selecione o tipo de evento</option><option>Casamento</option><option>Aniversário</option><option>Bodas</option><option>Formatura</option><option>Festa</option><option>Show ou festival</option><option>Evento corporativo</option><option>Evento religioso</option><option>Outro</option></select></div>
+              <div class="conditional" id="event-wedding" hidden><div class="field"><label for="coupleNames">Nome dos noivos <span class="required">*</span></label><input id="coupleNames" name="coupleNames" type="text" placeholder="Nome de cada um dos noivos" required></div><fieldset class="field choice-field"><legend>O making of da noiva será no mesmo local do casamento? <span class="required">*</span></legend><div class="choice-row"><label class="choice"><input type="radio" name="makingSameVenue" value="Sim" required><span>Sim</span></label><label class="choice"><input type="radio" name="makingSameVenue" value="Não"><span>Não</span></label></div></fieldset><div class="conditional" id="making-details" hidden><div class="field"><label for="makingVenue">Local ou endereço do making of <span class="required">*</span></label><input id="makingVenue" name="makingVenue" type="text" placeholder="Nome do local e endereço" required></div><div class="field"><label for="makingTime">Início previsto da preparação <span class="required">*</span></label><input id="makingTime" name="makingTime" type="time" required></div></div></div>
+              <div class="conditional" id="event-birthday" hidden><div class="field-grid"><div class="field"><label for="birthdayName">Nome do aniversariante <span class="required">*</span></label><input id="birthdayName" name="birthdayName" type="text" required></div><div class="field"><label for="birthdayAge">Idade que irá completar <span class="required">*</span></label><input id="birthdayAge" name="birthdayAge" type="number" min="1" max="120" required></div></div></div>
+              <div class="conditional" id="event-anniversary" hidden><div class="field-grid"><div class="field"><label for="anniversaryNames">Nome do casal <span class="required">*</span></label><input id="anniversaryNames" name="anniversaryNames" type="text" required></div><div class="field"><label for="anniversaryYears">Quantos anos de união serão celebrados? <span class="required">*</span></label><input id="anniversaryYears" name="anniversaryYears" type="number" min="1" max="100" required></div></div></div>
+              <div class="conditional" id="event-graduation" hidden><div class="field"><label for="graduateName">Nome do formando ou da turma <span class="required">*</span></label><input id="graduateName" name="graduateName" type="text" required></div><div class="field"><label for="graduateCourse">Curso ou instituição <span class="optional">opcional</span></label><input id="graduateCourse" name="graduateCourse" type="text"></div></div>
+              <div class="conditional" id="event-party" hidden><div class="field"><label for="partyName">Nome ou ocasião da festa <span class="required">*</span></label><input id="partyName" name="partyName" type="text" placeholder="Ex.: confraternização, festa de família" required></div><div class="field"><label for="partyHost">Anfitrião ou organização <span class="optional">opcional</span></label><input id="partyHost" name="partyHost" type="text"></div></div>
+              <div class="conditional" id="event-festival" hidden><div class="field"><label for="festivalName">Nome do show ou festival <span class="required">*</span></label><input id="festivalName" name="festivalName" type="text" required></div><div class="field"><label for="festivalHighlights">Atrações ou momentos principais <span class="optional">opcional</span></label><textarea id="festivalHighlights" name="festivalHighlights" rows="3"></textarea></div></div>
+              <div class="conditional" id="event-corporate" hidden><div class="field"><label for="companyName">Nome da empresa ou organização <span class="required">*</span></label><input id="companyName" name="companyName" type="text" required></div><div class="field"><label for="corporatePurpose">Objetivo do evento <span class="required">*</span></label><input id="corporatePurpose" name="corporatePurpose" type="text" placeholder="Ex.: lançamento, premiação, confraternização" required></div></div>
+              <div class="conditional" id="event-religious" hidden><div class="field"><label for="religiousName">Nome ou ocasião da celebração <span class="required">*</span></label><input id="religiousName" name="religiousName" type="text" required></div><div class="field"><label for="religiousPeople">Pessoas ou grupos em destaque <span class="optional">opcional</span></label><input id="religiousPeople" name="religiousPeople" type="text"></div></div>
+              <div class="conditional" id="event-other" hidden><div class="field"><label for="otherType">Qual é o tipo de evento? <span class="required">*</span></label><input id="otherType" name="otherType" type="text" required></div><div class="field"><label for="otherName">Nome ou pessoa principal do evento <span class="required">*</span></label><input id="otherName" name="otherName" type="text" required></div></div>
+              <div class="field"><label for="eventDate">Data do evento <span class="required">*</span></label><input id="eventDate" name="eventDate" type="date" required></div>
+              <div class="field"><label for="eventVenue">Local e endereço do evento <span class="required">*</span></label><input id="eventVenue" name="eventVenue" type="text" placeholder="Nome do espaço e endereço completo" required></div>
+              <div class="field-grid"><div class="field"><label for="coverageStart">Início da cobertura <span class="required">*</span></label><input id="coverageStart" name="coverageStart" type="time" required></div><div class="field"><label for="coverageEnd">Término da cobertura <span class="required">*</span></label><input id="coverageEnd" name="coverageEnd" type="time" required></div></div>
+            </section>
+
+            <section class="form-step" data-step="1" aria-labelledby="step-2-title" hidden>
+              <div class="section-heading"><span class="section-index">02 / 04</span><h2 id="step-2-title" tabindex="-1">Música e estilo do vídeo</h2><p>As escolhas de vocês ajudam a definir o ritmo e o sentimento do filme.</p></div>
+              <fieldset class="field choice-field"><legend>Vocês já escolheram a música que gostariam de usar no vídeo? <span class="required">*</span></legend><div class="choice-column"><label class="choice"><input type="radio" name="musicChoice" value="Sim" required><span>Sim</span></label><label class="choice"><input type="radio" name="musicChoice" value="Ainda não"><span>Ainda não</span></label><label class="choice"><input type="radio" name="musicChoice" value="Gostaríamos de receber sugestões"><span>Gostaríamos de receber sugestões</span></label></div></fieldset>
+              <div class="conditional" id="chosen-music" hidden><div class="field"><label for="musicTitle">Nome da música e artista <span class="required">*</span></label><input id="musicTitle" name="musicTitle" type="text" placeholder="Música — artista" required></div><div class="field"><label for="musicLink">Link da música <span class="optional">opcional</span></label><input id="musicLink" name="musicLink" type="url" placeholder="https://"></div></div>
+              <div class="conditional" id="music-suggestions" hidden><div class="field"><label for="musicStyle">Qual estilo musical combina mais com vocês? <span class="required">*</span></label><input id="musicStyle" name="musicStyle" type="text" placeholder="Ex.: acústico, MPB, instrumental..." required></div><div class="field"><label for="musicAvoid">Existe alguma música ou estilo que não gostariam que fosse utilizado?</label><textarea id="musicAvoid" name="musicAvoid" rows="3" placeholder="Contem aqui, se houver"></textarea></div></div>
+              <fieldset class="field choice-field"><legend>Qual estilo de vídeo vocês preferem? <span class="required">*</span></legend><div class="choice-column"><label class="choice"><input type="radio" name="videoStyle" value="Romântico e emocionante" required><span>Romântico e emocionante</span></label><label class="choice"><input type="radio" name="videoStyle" value="Cinematográfico"><span>Cinematográfico</span></label><label class="choice"><input type="radio" name="videoStyle" value="Natural e espontâneo"><span>Natural e espontâneo</span></label><label class="choice"><input type="radio" name="videoStyle" value="Dinâmico e animado"><span>Dinâmico e animado</span></label><label class="choice"><input type="radio" name="videoStyle" value="Ainda não sabemos"><span>Ainda não sabemos</span></label></div></fieldset>
+              <div class="field"><label for="colorPalette">Quais cores compõem a paleta do evento e devem ser valorizadas no vídeo?</label><textarea id="colorPalette" name="colorPalette" rows="3" placeholder="Ex.: verde oliva, branco e dourado. Se não houver paleta definida, podem deixar em branco."></textarea></div>
+              <div class="field"><label for="videoReferences">Links de vídeos de referência <span class="optional">opcional</span></label><textarea id="videoReferences" name="videoReferences" rows="3" placeholder="Cole um ou mais links, um por linha"></textarea></div>
+            </section>
+
+            <section class="form-step" data-step="2" aria-labelledby="step-3-title" hidden>
+              <div class="section-heading"><span class="section-index">03 / 04</span><h2 id="step-3-title" tabindex="-1">Preferências importantes</h2><p>Queremos saber o que merece atenção especial.</p></div>
+              <div class="field"><label for="importantDetails">Existe algum detalhe do evento que precisa ser enfatizado no vídeo?</label><textarea id="importantDetails" name="importantDetails" rows="4" placeholder="Decoração, objetos, gestos, tradições, atrações..."></textarea></div>
+              <fieldset class="field choice-field"><legend>Existe alguma surpresa, homenagem ou momento especial planejado? <span class="required">*</span></legend><div class="choice-row"><label class="choice"><input type="radio" name="hasSurprise" value="Sim" required><span>Sim</span></label><label class="choice"><input type="radio" name="hasSurprise" value="Não"><span>Não</span></label></div></fieldset>
+              <div class="conditional" id="surprise-details" hidden><div class="field"><label for="surpriseDescription">Detalhes da surpresa ou homenagem <span class="required">*</span></label><textarea id="surpriseDescription" name="surpriseDescription" rows="3" placeholder="O que vai acontecer?" required></textarea></div><div class="field"><label for="surpriseTime">Horário aproximado <span class="required">*</span></label><input id="surpriseTime" name="surpriseTime" type="text" placeholder="Ex.: por volta das 20h" required></div></div>
+              <fieldset class="field choice-field"><legend>Existe alguma pessoa que vocês gostariam que aparecesse mais no vídeo? <span class="required">*</span></legend><div class="choice-row"><label class="choice"><input type="radio" name="featurePerson" value="Sim" required><span>Sim</span></label><label class="choice"><input type="radio" name="featurePerson" value="Não"><span>Não</span></label></div></fieldset>
+              <div class="conditional" id="featured-person" hidden><div class="field"><label for="featuredName">Nome da pessoa <span class="required">*</span></label><input id="featuredName" name="featuredName" type="text" required></div><div class="field"><label for="featuredRelation">Relação com o evento <span class="required">*</span></label><input id="featuredRelation" name="featuredRelation" type="text" placeholder="Ex.: mãe do aniversariante, organizadora" required></div></div>
+              <fieldset class="field choice-field"><legend>Existe alguma pessoa que vocês preferem que não apareça no vídeo? <span class="required">*</span></legend><div class="choice-row"><label class="choice"><input type="radio" name="avoidPerson" value="Sim" required><span>Sim</span></label><label class="choice"><input type="radio" name="avoidPerson" value="Não"><span>Não</span></label></div></fieldset>
+              <div class="conditional" id="avoided-person" hidden><div class="field"><label for="avoidedDescription">Nome ou como identificar a pessoa <span class="required">*</span></label><textarea id="avoidedDescription" name="avoidedDescription" rows="3" required></textarea><p class="field-help">Essa informação será tratada com total discrição.</p></div></div>
+            </section>
+
+            <section class="form-step" data-step="3" aria-labelledby="step-4-title" hidden>
+              <div class="section-heading"><span class="section-index">04 / 04</span><h2 id="step-4-title" tabindex="-1">Informações finais</h2><p>Falta pouco. Estas orientações ajudam a cuidar de tudo com atenção.</p></div>
+              <div class="field"><label for="venueRules">Existe alguma regra ou restrição no local que eu precise respeitar durante a gravação?</label><textarea id="venueRules" name="venueRules" rows="4" placeholder="Ex.: áreas restritas, uso de iluminação, orientações do espaço..."></textarea></div>
+              <div class="field"><label for="familyNotes">Existe alguma situação familiar ou detalhe sensível que eu deva saber?</label><textarea id="familyNotes" name="familyNotes" rows="4" placeholder="Compartilhem apenas o que considerarem importante"></textarea></div>
+              <div class="field"><label for="otherNotes">Há mais alguma orientação ou observação importante?</label><textarea id="otherNotes" name="otherNotes" rows="4" placeholder="Qualquer detalhe que ajude na cobertura"></textarea></div>
+              <label class="confirm-choice"><input id="reviewConfirmed" name="reviewConfirmed" type="checkbox" required><span>Confirmo que revisei as informações e que elas estão corretas. <span class="required">*</span></span></label>
+            </section>
+
+            <div class="form-actions"><button id="back-button" class="button button-quiet" type="button" hidden>← Voltar</button><button id="next-button" class="button button-primary" type="button">Continuar <span aria-hidden="true">→</span></button></div>
+            <p id="form-error" class="form-error" role="alert" hidden>Confira os campos obrigatórios antes de continuar.</p>
+          </form>
+        </div>
+      </div>
+
+      <section id="review-view" class="review-view" aria-labelledby="review-title" hidden>
+        <img class="review-logo" src="assets/logo-dejesus-films.png" alt="deJesus Films" width="1080" height="1080">
+        <p class="eyebrow">REVISÃO FINAL</p>
+        <h1 id="review-title" tabindex="-1">Tudo certo.</h1>
+        <p class="review-intro">Confiram as respostas abaixo. Ao finalizar, uma cópia em PDF será enviada para a deJesus Films.</p>
+        <div id="review-content" class="review-content"></div>
+        <div class="review-actions"><button id="edit-button" class="button button-quiet" type="button">Editar respostas</button><button id="copy-button" class="button button-outline" type="button">Copiar respostas</button><button id="submit-button" class="button button-primary" type="button">Finalizar e enviar <span aria-hidden="true">→</span></button></div>
+        <p id="submit-status" class="form-error" role="alert" aria-live="assertive" hidden></p>
+        <p id="copy-status" class="copy-status" role="status" aria-live="polite"></p>
+        <button id="clear-button" class="clear-button" type="button">Apagar respostas deste navegador</button>
+      </section>
+
+      <section id="success-view" class="review-view" aria-labelledby="success-title" hidden>
+        <img class="review-logo" src="assets/logo-dejesus-films.png" alt="deJesus Films" width="1080" height="1080">
+        <p class="eyebrow">BRIEFING CONCLUÍDO</p>
+        <h1 id="success-title" tabindex="-1">Respostas enviadas.</h1>
+        <p class="review-intro">Tudo certo! As respostas foram enviadas para a deJesus Films em PDF. Obrigado por compartilhar essas informações.</p>
+        <div class="share-card"><h2>Desejam enviar uma cópia do PDF pelo WhatsApp?</h2><p>Vocês escolhem o contato e confirmam o compartilhamento no aparelho.</p><div class="review-actions"><button id="share-pdf-button" class="button button-primary" type="button">Sim, compartilhar PDF</button><button id="download-pdf-button" class="button button-outline" type="button">Baixar PDF</button><button id="no-share-button" class="button button-quiet" type="button">Agora não</button></div><p id="share-status" class="copy-status" role="status" aria-live="polite"></p></div>
+      </section>
+    </main>
+    <footer class="site-footer"><span>deJesus Films</span><span>Histórias em movimento.</span></footer>
+  </div>
+</body>
+</html>
