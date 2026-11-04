@@ -96,7 +96,7 @@ export function prepareBriefing(input) {
       break;
     default:
       eventName = read(input, 'otherName', { required: true, max: 160 });
-      eventDetails = [['Tipo de evento', read(input, 'otherType', { required: true, max: 120 })], ['Nome ou pessoa principal', eventName]];
+      eventDetails = [['Evento especificado', read(input, 'otherType', { required: true, max: 120 })], ['Nome ou pessoa principal', eventName]];
   }
   const eventDate = date(input);
   const eventVenue = read(input, 'eventVenue', { required: true, max: 300 });

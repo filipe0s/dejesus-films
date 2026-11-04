@@ -107,7 +107,7 @@
       'Show ou festival': [['Nome do show ou festival', value('festivalName')], ['Atrações ou momentos principais', value('festivalHighlights')]],
       'Evento corporativo': [['Empresa ou organização', value('companyName')], ['Objetivo do evento', value('corporatePurpose')]],
       'Evento religioso': [['Nome ou ocasião da celebração', value('religiousName')], ['Pessoas ou grupos em destaque', value('religiousPeople')]],
-      Outro: [['Tipo de evento', value('otherType')], ['Nome ou pessoa principal', value('otherName')]]
+      Outro: [['Evento especificado', value('otherType')], ['Nome ou pessoa principal', value('otherName')]]
     };
     const date = value('eventDate');
     const formattedDate = /^\d{4}-\d{2}-\d{2}$/.test(date) ? date.split('-').reverse().join('/') : date;
