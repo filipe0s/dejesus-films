@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#0b0b0d">
   <meta name="robots" content="noindex,nofollow">
   <meta name="referrer" content="no-referrer">
-  <meta name="description" content="Briefing de evento deJesus Films: informe os detalhes da cobertura e compartilhe suas preferências para o filme.">
+  <meta name="description" content="Briefing de evento deJesus Films: informe os detalhes da cobertura e compartilhe suas preferências.">
   <title>Briefing de Evento | deJesus Films</title>
   <link rel="icon" href="assets/icone-d.png" type="image/png">
   <link rel="stylesheet" href="styles.css">
@@ -25,8 +25,8 @@
       <div id="form-view">
         <section class="intro" aria-labelledby="page-title">
           <p class="eyebrow">O FILME COMEÇA AQUI</p>
-          <h1 id="page-title">Cada evento tem<br><em>uma história.</em></h1>
-          <p class="intro-copy">Contem os detalhes do evento e o que merece atenção na cobertura. As perguntas se adaptam ao tipo de celebração para que o filme represente o que é importante para vocês.</p>
+          <h1 id="page-title">A história de vocês<br><em>em cada detalhe.</em></h1>
+          <p class="intro-copy">Para que a cobertura represente verdadeiramente a sua história e todos os detalhes, preciso confirmar algumas informações importantes sobre o evento. O procedimento é rápido e ajudará a deixar tudo alinhado para o grande dia.</p>
         </section>
 
         <div class="form-layout">
@@ -35,7 +35,7 @@
             <div class="progress-track" role="progressbar" aria-label="Progresso" aria-valuemin="0" aria-valuemax="4" aria-valuenow="1"><span id="progress-fill"></span></div>
             <ol class="step-list" id="step-list">
               <li class="current" aria-current="step"><span class="step-number">01</span><span>Confirmação do evento</span></li>
-              <li><span class="step-number">02</span><span>Música e estilo</span></li>
+              <li><span class="step-number">02</span><span>Música e estilo da cobertura</span></li>
               <li><span class="step-number">03</span><span>Preferências importantes</span></li>
               <li><span class="step-number">04</span><span>Informações finais</span></li>
             </ol>
@@ -61,13 +61,13 @@
             </section>
 
             <section class="form-step" data-step="1" aria-labelledby="step-2-title" hidden>
-              <div class="section-heading"><span class="section-index">02 / 04</span><h2 id="step-2-title" tabindex="-1">Música e estilo do vídeo</h2><p>As escolhas de vocês ajudam a definir o ritmo e o sentimento do filme.</p></div>
-              <fieldset class="field choice-field"><legend>Vocês já escolheram a música que gostariam de usar no vídeo? <span class="required">*</span></legend><div class="choice-column"><label class="choice"><input type="radio" name="musicChoice" value="Sim" required><span>Sim</span></label><label class="choice"><input type="radio" name="musicChoice" value="Ainda não"><span>Ainda não</span></label><label class="choice"><input type="radio" name="musicChoice" value="Gostaríamos de receber sugestões"><span>Gostaríamos de receber sugestões</span></label></div></fieldset>
-              <div class="conditional" id="chosen-music" hidden><div class="field"><label for="musicTitle">Nome da música e artista <span class="required">*</span></label><input id="musicTitle" name="musicTitle" type="text" placeholder="Música — artista" required></div><div class="field"><label for="musicLink">Link da música <span class="optional">opcional</span></label><input id="musicLink" name="musicLink" type="url" placeholder="https://"></div></div>
+              <div class="section-heading"><span class="section-index">02 / 04</span><h2 id="step-2-title" tabindex="-1">Música e estilo da cobertura</h2><p>As escolhas de vocês ajudam a definir o ritmo e o sentimento dos vídeos.</p></div>
+              <fieldset class="field choice-field"><legend>Vocês já escolheram as músicas que gostariam de usar na cobertura? <span class="required">*</span></legend><div class="choice-column"><label class="choice"><input type="radio" name="musicChoice" value="Sim" required><span>Sim</span></label><label class="choice"><input type="radio" name="musicChoice" value="Ainda não"><span>Ainda não</span></label><label class="choice"><input type="radio" name="musicChoice" value="Gostaríamos de receber sugestões"><span>Gostaríamos de receber sugestões</span></label></div></fieldset>
+              <div class="conditional" id="chosen-music" hidden><div class="field"><label for="musicTitle">Músicas e artistas <span class="required">*</span></label><textarea id="musicTitle" name="musicTitle" rows="3" placeholder="Uma música e artista por linha" required></textarea></div><div class="field"><label for="musicLink">Links das músicas <span class="optional">opcional</span></label><textarea id="musicLink" name="musicLink" rows="3" placeholder="Um link por linha, se houver"></textarea></div></div>
               <div class="conditional" id="music-suggestions" hidden><div class="field"><label for="musicStyle">Qual estilo musical combina mais com vocês? <span class="required">*</span></label><input id="musicStyle" name="musicStyle" type="text" placeholder="Ex.: acústico, MPB, instrumental..." required></div><div class="field"><label for="musicAvoid">Existe alguma música ou estilo que não gostariam que fosse utilizado?</label><textarea id="musicAvoid" name="musicAvoid" rows="3" placeholder="Contem aqui, se houver"></textarea></div></div>
-              <fieldset class="field choice-field"><legend>Qual estilo de vídeo vocês preferem? <span class="required">*</span></legend><div class="choice-column"><label class="choice"><input type="radio" name="videoStyle" value="Romântico e emocionante" required><span>Romântico e emocionante</span></label><label class="choice"><input type="radio" name="videoStyle" value="Cinematográfico"><span>Cinematográfico</span></label><label class="choice"><input type="radio" name="videoStyle" value="Natural e espontâneo"><span>Natural e espontâneo</span></label><label class="choice"><input type="radio" name="videoStyle" value="Dinâmico e animado"><span>Dinâmico e animado</span></label><label class="choice"><input type="radio" name="videoStyle" value="Ainda não sabemos"><span>Ainda não sabemos</span></label></div></fieldset>
-              <div class="field"><label for="colorPalette">Quais cores compõem a paleta do evento e devem ser valorizadas no vídeo?</label><textarea id="colorPalette" name="colorPalette" rows="3" placeholder="Ex.: verde oliva, branco e dourado. Se não houver paleta definida, podem deixar em branco."></textarea></div>
-              <div class="field"><label for="videoReferences">Links de vídeos de referência <span class="optional">opcional</span></label><textarea id="videoReferences" name="videoReferences" rows="3" placeholder="Cole um ou mais links, um por linha"></textarea></div>
+              <fieldset class="field choice-field"><legend>Qual estilo visual vocês preferem para a cobertura? <span class="required">*</span></legend><div class="choice-column"><label class="choice"><input type="radio" name="videoStyle" value="Romântico e emocionante" required><span>Romântico e emocionante</span></label><label class="choice"><input type="radio" name="videoStyle" value="Cinematográfico"><span>Cinematográfico</span></label><label class="choice"><input type="radio" name="videoStyle" value="Natural e espontâneo"><span>Natural e espontâneo</span></label><label class="choice"><input type="radio" name="videoStyle" value="Dinâmico e animado"><span>Dinâmico e animado</span></label><label class="choice"><input type="radio" name="videoStyle" value="Ainda não sabemos"><span>Ainda não sabemos</span></label></div></fieldset>
+              <div class="field"><label for="colorPalette">Quais cores compõem a paleta do evento e devem ser valorizadas nos vídeos?</label><textarea id="colorPalette" name="colorPalette" rows="3" placeholder="Ex.: verde oliva, branco e dourado. Se não houver paleta definida, podem deixar em branco."></textarea></div>
+              <div class="field"><label for="videoReferences">Referências visuais (links de vídeos ou outras obras) <span class="optional">opcional</span></label><textarea id="videoReferences" name="videoReferences" rows="3" placeholder="Cole links de vídeos, filmes ou outras obras, um por linha"></textarea></div>
             </section>
 
             <section class="form-step" data-step="2" aria-labelledby="step-3-title" hidden>

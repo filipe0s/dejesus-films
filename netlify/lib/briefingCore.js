@@ -116,19 +116,19 @@ export function prepareBriefing(input) {
       ['Local e endereço', eventVenue],
       ['Horário da cobertura', `${coverageStart} às ${coverageEnd}`]
     ]),
-    section('02 · Música e estilo do vídeo', [
-      ['Música escolhida?', musicChoice],
+    section('02 · Música e estilo da cobertura', [
+      ['Músicas escolhidas?', musicChoice],
       ...(musicChoice === 'Sim' ? [
-        ['Música e artista', read(input, 'musicTitle', { required: true, max: 200 })],
-        ['Link da música', read(input, 'musicLink', { max: 500 })]
+        ['Músicas e artistas', read(input, 'musicTitle', { required: true, max: 600 })],
+        ['Links das músicas', read(input, 'musicLink', { max: 1000 })]
       ] : []),
       ...(musicChoice === 'Gostaríamos de receber sugestões' ? [
         ['Estilo musical', read(input, 'musicStyle', { required: true, max: 200 })],
         ['Música ou estilo a evitar', read(input, 'musicAvoid', { max: 600 })]
       ] : []),
-      ['Estilo de vídeo', videoStyle],
+      ['Estilo visual da cobertura', videoStyle],
       ['Paleta de cores do evento', read(input, 'colorPalette', { max: 600 })],
-      ['Vídeos de referência', read(input, 'videoReferences', { max: 1000 })]
+      ['Referências visuais', read(input, 'videoReferences', { max: 1000 })]
     ]),
     section('03 · Preferências importantes', [
       ['Detalhes a enfatizar', read(input, 'importantDetails', { max: 1000 })],

@@ -119,11 +119,11 @@
         ['Local e endereço', value('eventVenue')],
         ['Horário da cobertura', `${value('coverageStart')} às ${value('coverageEnd')}`]
       ]),
-      section('02 · Música e estilo do vídeo', [
-        ['Música escolhida?', music],
-        ...(music === 'Sim' ? [['Música e artista', value('musicTitle')], ['Link da música', value('musicLink')]] : []),
+      section('02 · Música e estilo da cobertura', [
+        ['Músicas escolhidas?', music],
+        ...(music === 'Sim' ? [['Músicas e artistas', value('musicTitle')], ['Links das músicas', value('musicLink')]] : []),
         ...(music === 'Gostaríamos de receber sugestões' ? [['Estilo musical', value('musicStyle')], ['Música ou estilo a evitar', value('musicAvoid')]] : []),
-        ['Estilo de vídeo', value('videoStyle')], ['Paleta de cores do evento', value('colorPalette')], ['Vídeos de referência', value('videoReferences')]
+        ['Estilo visual da cobertura', value('videoStyle')], ['Paleta de cores do evento', value('colorPalette')], ['Referências visuais', value('videoReferences')]
       ]),
       section('03 · Preferências importantes', [
         ['Detalhes a enfatizar', value('importantDetails')], ['Surpresa ou homenagem?', value('hasSurprise')],
@@ -243,7 +243,7 @@
     shareStatus.textContent = 'O PDF foi baixado. Abram o WhatsApp e anexem o arquivo à conversa desejada.';
   });
   document.getElementById('no-share-button').addEventListener('click', () => {
-    shareStatus.textContent = 'Tudo certo. O briefing já foi enviado à deJesus Films.';
+    window.location.assign('/');
   });
   document.getElementById('clear-button').addEventListener('click', () => {
     if (!window.confirm('Apagar todas as respostas salvas neste navegador?')) return;
