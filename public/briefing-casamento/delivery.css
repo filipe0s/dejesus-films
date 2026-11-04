@@ -1,0 +1,7 @@
+.share-card{background:#141416;border:1px solid #343437;border-radius:9px;padding:28px;margin-top:32px}
+.share-card h2{font-family:Georgia,'Times New Roman',serif;font-size:27px;font-weight:400;line-height:1.25;margin:0 0 8px}
+.share-card p{color:#a8a7a4;font-size:14px;margin:0}
+.share-card .review-actions{margin-top:24px}
+.share-card .copy-status{margin-top:15px;min-height:21px;color:#ffb300}
+.button:disabled{opacity:.6;cursor:wait;transform:none}
+@media(max-width:560px){.share-card{padding:21px}.share-card h2{font-size:24px}}
