@@ -41,8 +41,8 @@ export default async function submitBriefing(request) {
       body: JSON.stringify({
         to: [{ email: RECIPIENT }],
         sender: { email: senderEmail, name: 'deJesus Films' },
-        subject: `Briefing de casamento — ${prepared.coupleNames.replace(/\s+/g, ' ')}`,
-        textContent: `Novo briefing de casamento de ${prepared.coupleNames.replace(/\s+/g, ' ')}. O PDF com todas as respostas está em anexo.`,
+        subject: `Briefing de evento — ${prepared.eventType} — ${prepared.eventName.replace(/\s+/g, ' ')}`,
+        textContent: `Novo briefing de ${prepared.eventType.toLowerCase()}: ${prepared.eventName.replace(/\s+/g, ' ')}. O PDF com todas as respostas está em anexo.`,
         attachment: [{ content: pdfBase64, name: prepared.fileName }]
       })
     });

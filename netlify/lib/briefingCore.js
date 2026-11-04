@@ -5,6 +5,7 @@ const GOLD = rgb(1, 0.7, 0);
 const INK = rgb(0.06, 0.06, 0.07);
 const MUTED = rgb(0.38, 0.38, 0.4);
 const YES_NO = ['Sim', 'Não'];
+const EVENT_TYPES = ['Casamento', 'Aniversário', 'Bodas', 'Formatura', 'Festa', 'Show ou festival', 'Evento corporativo', 'Evento religioso', 'Outro'];
 
 function read(input, key, { required = false, max = 1000 } = {}) {
   const raw = input[key];
@@ -25,13 +26,82 @@ function section(title, rows) {
   return { title, rows: rows.filter(([, answer]) => answer !== '') };
 }
 
+function wholeNumber(input, key, min, max) {
+  const text = read(input, key, { required: true, max: 3 });
+  if (!/^\d+$/.test(text) || Number(text) < min || Number(text) > max) throw new Error(`Número inválido: ${key}`);
+  return text;
+}
+
+function time(input, key) {
+  const text = read(input, key, { required: true, max: 5 });
+  if (!/^([01]\d|2[0-3]):[0-5]\d$/.test(text)) throw new Error(`Horário inválido: ${key}`);
+  return text;
+}
+
+function date(input) {
+  const text = read(input, 'eventDate', { required: true, max: 10 });
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(text)) throw new Error('Data inválida');
+  const parsed = new Date(`${text}T00:00:00Z`);
+  if (Number.isNaN(parsed.valueOf()) || parsed.toISOString().slice(0, 10) !== text) throw new Error('Data inválida');
+  return text.split('-').reverse().join('/');
+}
+
 export function prepareBriefing(input) {
   if (!input || typeof input !== 'object' || Array.isArray(input)) throw new Error('Respostas inválidas');
   if (JSON.stringify(input).length > MAX_TOTAL_CHARS) throw new Error('Briefing muito longo');
   if (input.reviewConfirmed !== true) throw new Error('Confirmação obrigatória');
-  const coupleNames = read(input, 'coupleNames', { required: true, max: 160 });
-  const eventCorrect = choice(input, 'eventCorrect', YES_NO);
-  const makingSameVenue = choice(input, 'makingSameVenue', YES_NO);
+  const eventType = choice(input, 'eventType', EVENT_TYPES);
+  let eventName;
+  let eventDetails;
+  switch (eventType) {
+    case 'Casamento': {
+      eventName = read(input, 'coupleNames', { required: true, max: 160 });
+      const makingSameVenue = choice(input, 'makingSameVenue', YES_NO);
+      eventDetails = [
+        ['Nome dos noivos', eventName], ['Making of no mesmo local?', makingSameVenue],
+        ...(makingSameVenue === 'Não' ? [
+          ['Local do making of', read(input, 'makingVenue', { required: true, max: 300 })],
+          ['Início da preparação', time(input, 'makingTime')]
+        ] : [])
+      ];
+      break;
+    }
+    case 'Aniversário':
+      eventName = read(input, 'birthdayName', { required: true, max: 160 });
+      eventDetails = [['Nome do aniversariante', eventName], ['Idade que irá completar', wholeNumber(input, 'birthdayAge', 1, 120)]];
+      break;
+    case 'Bodas':
+      eventName = read(input, 'anniversaryNames', { required: true, max: 160 });
+      eventDetails = [['Nome do casal', eventName], ['Anos de união', wholeNumber(input, 'anniversaryYears', 1, 100)]];
+      break;
+    case 'Formatura':
+      eventName = read(input, 'graduateName', { required: true, max: 160 });
+      eventDetails = [['Formando ou turma', eventName], ['Curso ou instituição', read(input, 'graduateCourse', { max: 200 })]];
+      break;
+    case 'Festa':
+      eventName = read(input, 'partyName', { required: true, max: 160 });
+      eventDetails = [['Nome ou ocasião da festa', eventName], ['Anfitrião ou organização', read(input, 'partyHost', { max: 160 })]];
+      break;
+    case 'Show ou festival':
+      eventName = read(input, 'festivalName', { required: true, max: 160 });
+      eventDetails = [['Nome do show ou festival', eventName], ['Atrações ou momentos principais', read(input, 'festivalHighlights', { max: 600 })]];
+      break;
+    case 'Evento corporativo':
+      eventName = read(input, 'companyName', { required: true, max: 160 });
+      eventDetails = [['Empresa ou organização', eventName], ['Objetivo do evento', read(input, 'corporatePurpose', { required: true, max: 200 })]];
+      break;
+    case 'Evento religioso':
+      eventName = read(input, 'religiousName', { required: true, max: 160 });
+      eventDetails = [['Nome ou ocasião da celebração', eventName], ['Pessoas ou grupos em destaque', read(input, 'religiousPeople', { max: 200 })]];
+      break;
+    default:
+      eventName = read(input, 'otherName', { required: true, max: 160 });
+      eventDetails = [['Tipo de evento', read(input, 'otherType', { required: true, max: 120 })], ['Nome ou pessoa principal', eventName]];
+  }
+  const eventDate = date(input);
+  const eventVenue = read(input, 'eventVenue', { required: true, max: 300 });
+  const coverageStart = time(input, 'coverageStart');
+  const coverageEnd = time(input, 'coverageEnd');
   const musicChoice = choice(input, 'musicChoice', ['Sim', 'Ainda não', 'Gostaríamos de receber sugestões']);
   const videoStyle = choice(input, 'videoStyle', ['Romântico e emocionante', 'Cinematográfico', 'Natural e espontâneo', 'Dinâmico e animado', 'Ainda não sabemos']);
   const hasSurprise = choice(input, 'hasSurprise', YES_NO);
@@ -40,19 +110,11 @@ export function prepareBriefing(input) {
 
   const sections = [
     section('01 · Confirmação do evento', [
-      ['Nome dos noivos', coupleNames],
-      ['Informações previstas', '20/11 · 19h às 21h · Igreja Batista Betel'],
-      ['Informações corretas?', eventCorrect],
-      ...(eventCorrect === 'Não' ? [
-        ['Data correta', read(input, 'correctDate', { required: true, max: 80 })],
-        ['Horário correto', read(input, 'correctTime', { required: true, max: 80 })],
-        ['Local e endereço corretos', read(input, 'correctVenue', { required: true, max: 300 })]
-      ] : []),
-      ['Making of no mesmo local?', makingSameVenue],
-      ...(makingSameVenue === 'Não' ? [
-        ['Local ou endereço do making of', read(input, 'makingVenue', { required: true, max: 300 })],
-        ['Início da preparação', read(input, 'makingTime', { required: true, max: 80 })]
-      ] : [])
+      ['Tipo de evento', eventType],
+      ...eventDetails,
+      ['Data', eventDate],
+      ['Local e endereço', eventVenue],
+      ['Horário da cobertura', `${coverageStart} às ${coverageEnd}`]
     ]),
     section('02 · Música e estilo do vídeo', [
       ['Música escolhida?', musicChoice],
@@ -65,7 +127,7 @@ export function prepareBriefing(input) {
         ['Música ou estilo a evitar', read(input, 'musicAvoid', { max: 600 })]
       ] : []),
       ['Estilo de vídeo', videoStyle],
-      ['Paleta de cores do casamento', read(input, 'colorPalette', { max: 600 })],
+      ['Paleta de cores do evento', read(input, 'colorPalette', { max: 600 })],
       ['Vídeos de referência', read(input, 'videoReferences', { max: 1000 })]
     ]),
     section('03 · Preferências importantes', [
@@ -78,7 +140,7 @@ export function prepareBriefing(input) {
       ['Pessoa para aparecer mais?', featurePerson],
       ...(featurePerson === 'Sim' ? [
         ['Nome da pessoa', read(input, 'featuredName', { required: true, max: 160 })],
-        ['Relação com o casal', read(input, 'featuredRelation', { required: true, max: 160 })]
+        ['Relação com o evento', read(input, 'featuredRelation', { required: true, max: 160 })]
       ] : []),
       ['Pessoa que não deve aparecer?', avoidPerson],
       ...(avoidPerson === 'Sim' ? [
@@ -92,8 +154,8 @@ export function prepareBriefing(input) {
       ['Informações revisadas e confirmadas?', 'Sim']
     ])
   ];
-  const slug = coupleNames.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 60) || 'casal';
-  return { coupleNames, sections, fileName: `briefing-casamento-${slug}.pdf` };
+  const slug = eventName.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 60) || 'evento';
+  return { eventType, eventName, sections, fileName: `briefing-evento-${slug}.pdf` };
 }
 
 function safeText(text, font) {
@@ -153,8 +215,8 @@ export async function buildBriefingPdf(prepared) {
   };
 
   addPage();
-  drawLines('Briefing de casamento', bold, 22, INK, 29);
-  drawLines(prepared.coupleNames, regular, 13, MUTED, 21);
+  drawLines('Briefing de evento', bold, 22, INK, 29);
+  drawLines(`${prepared.eventType} · ${prepared.eventName}`, regular, 13, MUTED, 21);
   y -= 13;
 
   for (const group of prepared.sections) {

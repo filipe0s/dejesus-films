@@ -1,10 +1,10 @@
-# Briefing de casamento
+# Briefing de evento
 
-O formulário fica na rota `https://www.fdejesus.com.br/briefing-casamento/`, dentro do mesmo deploy Netlify do portfólio. Não há link para ele no menu, no rodapé ou no sitemap. A página usa `noindex,nofollow`, e a Netlify acrescenta `X-Robots-Tag` para essa rota. Quem souber o endereço ainda consegue abri-la; o link não é uma proteção por senha.
+O formulário fica na rota `https://www.fdejesus.com.br/briefing-evento/`, dentro do mesmo deploy Netlify do portfólio. Não há link para ele no menu, no rodapé ou no sitemap. A página usa `noindex,nofollow`, e a Netlify acrescenta `X-Robots-Tag` para essa rota. Quem souber o endereço ainda consegue abri-la; o link não é uma proteção por senha.
 
 ## Envio do PDF
 
-Ao finalizar, o navegador chama a função `netlify/functions/submit-briefing.mjs`. Ela valida as respostas, gera o PDF e envia o anexo via Brevo para `dejesusfilms@gmail.com`. A tela de sucesso só aparece quando a API de e-mail aceita a mensagem. Depois, o casal pode escolher compartilhar o PDF pelo WhatsApp no menu do aparelho; se o navegador não oferecer compartilhamento de arquivos, o PDF é baixado para anexar manualmente.
+Ao finalizar, o navegador chama a função `netlify/functions/submit-briefing.mjs`. Ela valida as respostas, gera o PDF e envia o anexo via Brevo para `dejesusfilms@gmail.com`. A tela de sucesso só aparece quando a API de e-mail aceita a mensagem. Depois, o cliente pode escolher compartilhar o PDF pelo WhatsApp no menu do aparelho; se o navegador não oferecer compartilhamento de arquivos, o PDF é baixado para anexar manualmente.
 
 Antes de publicar, configurar na interface da Netlify as variáveis abaixo, disponíveis para **Functions**. No plano gratuito, o escopo padrão já as inclui; nos planos que permitem escolher escopos, selecionar **Functions**:
 
@@ -21,9 +21,9 @@ Não colocar a chave no repositório, em `netlify.toml` ou no JavaScript do nave
 
 ## Código
 
-- `public/briefing-casamento/`: página, estilos, script e logos.
+- `public/briefing-evento/`: página, estilos, script e logos.
 - `netlify/lib/briefingCore.js`: validação e geração do PDF.
 - `netlify/functions/submit-briefing.mjs`: endpoint e envio de e-mail.
 - `scripts/test-briefing.mjs`: teste da função e do anexo.
 
-`npm run build` copia a página para `dist/briefing-casamento/`. A verificação de produção exige que ela continue ausente da página inicial e do sitemap.
+`npm run build` copia a página para `dist/briefing-evento/`. A verificação de produção exige que ela continue ausente da página inicial e do sitemap.

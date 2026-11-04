@@ -1,6 +1,6 @@
 # deJesus Films
 
-O briefing de casamento fica em uma rota de acesso direto, fora do menu. Veja [BRIEFING-CASAMENTO.md](BRIEFING-CASAMENTO.md) para a configuração do PDF e do e-mail antes da publicação.
+O briefing de evento fica em uma rota de acesso direto, fora do menu. Veja [BRIEFING-EVENTO.md](BRIEFING-EVENTO.md) para a configuração do PDF e do e-mail antes da publicação.
 
 Versão com visual e conteúdo aprovados em 7 de outubro de 2026, preparada tecnicamente para Netlify. Site estático em português brasileiro, sem dependências de produção ou banco de dados. Nada foi publicado e nenhuma conta ou DNS foi conectado. Diagnóstico atual em [PUBLICACAO.md](PUBLICACAO.md); VERIFICACAO.md registra as revisões anteriores.
 

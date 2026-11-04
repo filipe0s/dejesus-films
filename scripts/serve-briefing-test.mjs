@@ -38,4 +38,4 @@ http.createServer(async (req, res) => {
   } catch (_) {
     res.writeHead(404); res.end('Não encontrado');
   }
-}).listen(port, '127.0.0.1', () => console.log(`Briefing local: http://127.0.0.1:${port}/briefing-casamento/`));
+}).listen(port, '127.0.0.1', () => console.log(`Briefing local: http://127.0.0.1:${port}/briefing-evento/`));

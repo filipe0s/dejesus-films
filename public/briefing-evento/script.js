@@ -11,11 +11,11 @@
   const submitButton = document.getElementById('submit-button');
   const submitStatus = document.getElementById('submit-status');
   const shareStatus = document.getElementById('share-status');
-  const draftKey = 'dejesus-films-wedding-briefing-v1';
+  const draftKey = 'dejesus-films-event-briefing-v1';
   const draftLifetime = 7 * 24 * 60 * 60 * 1000;
   let step = 0;
   let pdfBytes;
-  let pdfFileName = 'briefing-casamento.pdf';
+  let pdfFileName = 'briefing-evento.pdf';
 
   const value = name => {
     const field = form.elements.namedItem(name);
@@ -26,11 +26,16 @@
   const setConditional = (id, show) => {
     const container = document.getElementById(id);
     container.hidden = !show;
-    container.querySelectorAll('input,textarea').forEach(field => { field.disabled = !show; });
+    container.querySelectorAll('input,textarea,select').forEach(field => { field.disabled = !show; });
   };
   const syncConditionals = () => {
-    setConditional('event-correction', value('eventCorrect') === 'Não');
-    setConditional('making-details', value('makingSameVenue') === 'Não');
+    const eventType = value('eventType');
+    for (const [type, id] of [
+      ['Casamento', 'event-wedding'], ['Aniversário', 'event-birthday'], ['Bodas', 'event-anniversary'],
+      ['Formatura', 'event-graduation'], ['Festa', 'event-party'], ['Show ou festival', 'event-festival'],
+      ['Evento corporativo', 'event-corporate'], ['Evento religioso', 'event-religious'], ['Outro', 'event-other']
+    ]) setConditional(id, eventType === type);
+    setConditional('making-details', eventType === 'Casamento' && value('makingSameVenue') === 'Não');
     setConditional('chosen-music', value('musicChoice') === 'Sim');
     setConditional('music-suggestions', value('musicChoice') === 'Gostaríamos de receber sugestões');
     setConditional('surprise-details', value('hasSurprise') === 'Sim');
@@ -39,7 +44,7 @@
   };
   const getAnswers = () => {
     const answers = {};
-    form.querySelectorAll('[name]').forEach(field => {
+    form.querySelectorAll('[name]:not(:disabled)').forEach(field => {
       if (field.type === 'radio') { if (field.checked) answers[field.name] = field.value; }
       else answers[field.name] = field.type === 'checkbox' ? field.checked : field.value;
     });
@@ -83,7 +88,7 @@
   const validateStep = () => {
     const current = steps[step];
     current.querySelectorAll('[aria-invalid]').forEach(field => field.removeAttribute('aria-invalid'));
-    const fields = [...current.querySelectorAll('input,textarea')].filter(field => !field.disabled);
+    const fields = [...current.querySelectorAll('input,textarea,select')].filter(field => !field.disabled);
     const invalid = fields.find(field => !field.checkValidity());
     error.hidden = !invalid;
     if (invalid) { invalid.setAttribute('aria-invalid', 'true'); invalid.focus(); invalid.reportValidity(); return false; }
@@ -91,29 +96,40 @@
   };
   const section = (title, rows) => ({ title, rows: rows.filter(([, answer]) => answer !== '') });
   const getReviewSections = () => {
-    const corrected = value('eventCorrect') === 'Não';
-    const makingDifferent = value('makingSameVenue') === 'Não';
+    const eventType = value('eventType');
     const music = value('musicChoice');
+    const details = {
+      Casamento: [['Nome dos noivos', value('coupleNames')], ['Making of no mesmo local?', value('makingSameVenue')], ...(value('makingSameVenue') === 'Não' ? [['Local do making of', value('makingVenue')], ['Início da preparação', value('makingTime')]] : [])],
+      Aniversário: [['Nome do aniversariante', value('birthdayName')], ['Idade que irá completar', value('birthdayAge')]],
+      Bodas: [['Nome do casal', value('anniversaryNames')], ['Anos de união', value('anniversaryYears')]],
+      Formatura: [['Formando ou turma', value('graduateName')], ['Curso ou instituição', value('graduateCourse')]],
+      Festa: [['Nome ou ocasião da festa', value('partyName')], ['Anfitrião ou organização', value('partyHost')]],
+      'Show ou festival': [['Nome do show ou festival', value('festivalName')], ['Atrações ou momentos principais', value('festivalHighlights')]],
+      'Evento corporativo': [['Empresa ou organização', value('companyName')], ['Objetivo do evento', value('corporatePurpose')]],
+      'Evento religioso': [['Nome ou ocasião da celebração', value('religiousName')], ['Pessoas ou grupos em destaque', value('religiousPeople')]],
+      Outro: [['Tipo de evento', value('otherType')], ['Nome ou pessoa principal', value('otherName')]]
+    };
+    const date = value('eventDate');
+    const formattedDate = /^\d{4}-\d{2}-\d{2}$/.test(date) ? date.split('-').reverse().join('/') : date;
     return [
       section('01 · Confirmação do evento', [
-        ['Nome dos noivos', value('coupleNames')],
-        ['Informações previstas', '20/11 · 19h às 21h · Igreja Batista Betel'],
-        ['Informações corretas?', value('eventCorrect')],
-        ...(corrected ? [['Data correta', value('correctDate')], ['Horário correto', value('correctTime')], ['Local e endereço corretos', value('correctVenue')]] : []),
-        ['Making of no mesmo local?', value('makingSameVenue')],
-        ...(makingDifferent ? [['Local ou endereço do making of', value('makingVenue')], ['Início da preparação', value('makingTime')]] : [])
+        ['Tipo de evento', eventType],
+        ...(details[eventType] || []),
+        ['Data', formattedDate],
+        ['Local e endereço', value('eventVenue')],
+        ['Horário da cobertura', `${value('coverageStart')} às ${value('coverageEnd')}`]
       ]),
       section('02 · Música e estilo do vídeo', [
         ['Música escolhida?', music],
         ...(music === 'Sim' ? [['Música e artista', value('musicTitle')], ['Link da música', value('musicLink')]] : []),
         ...(music === 'Gostaríamos de receber sugestões' ? [['Estilo musical', value('musicStyle')], ['Música ou estilo a evitar', value('musicAvoid')]] : []),
-        ['Estilo de vídeo', value('videoStyle')], ['Paleta de cores do casamento', value('colorPalette')], ['Vídeos de referência', value('videoReferences')]
+        ['Estilo de vídeo', value('videoStyle')], ['Paleta de cores do evento', value('colorPalette')], ['Vídeos de referência', value('videoReferences')]
       ]),
       section('03 · Preferências importantes', [
         ['Detalhes a enfatizar', value('importantDetails')], ['Surpresa ou homenagem?', value('hasSurprise')],
         ...(value('hasSurprise') === 'Sim' ? [['Detalhes da surpresa', value('surpriseDescription')], ['Horário aproximado', value('surpriseTime')]] : []),
         ['Pessoa para aparecer mais?', value('featurePerson')],
-        ...(value('featurePerson') === 'Sim' ? [['Nome da pessoa', value('featuredName')], ['Relação com o casal', value('featuredRelation')]] : []),
+        ...(value('featurePerson') === 'Sim' ? [['Nome da pessoa', value('featuredName')], ['Relação com o evento', value('featuredRelation')]] : []),
         ['Pessoa que não deve aparecer?', value('avoidPerson')],
         ...(value('avoidPerson') === 'Sim' ? [['Nome ou identificação', value('avoidedDescription')]] : [])
       ]),
@@ -123,7 +139,7 @@
       ])
     ];
   };
-  const buildMessage = sections => ['BRIEFING DE CASAMENTO — deJesus Films', ...sections.flatMap(group => ['', group.title.toUpperCase(), ...group.rows.map(([label, answer]) => `${label}: ${answer}`)])].join('\n');
+  const buildMessage = sections => ['BRIEFING DE EVENTO — deJesus Films', ...sections.flatMap(group => ['', group.title.toUpperCase(), ...group.rows.map(([label, answer]) => `${label}: ${answer}`)])].join('\n');
   const showReview = () => {
     const sections = getReviewSections();
     const content = document.getElementById('review-content');
@@ -189,7 +205,7 @@
       if (typeof data.pdfBase64 !== 'string' || !data.pdfBase64.length) throw new Error('Missing PDF');
       pdfBytes = Uint8Array.from(atob(data.pdfBase64), character => character.charCodeAt(0));
       if (String.fromCharCode(...pdfBytes.slice(0, 4)) !== '%PDF') throw new Error('Invalid PDF');
-      pdfFileName = String(data.fileName || 'briefing-casamento.pdf').replace(/[^a-zA-Z0-9._-]/g, '-');
+      pdfFileName = String(data.fileName || 'briefing-evento.pdf').replace(/[^a-zA-Z0-9._-]/g, '-');
     } catch (_) {
       pdfBytes = undefined;
       document.getElementById('share-pdf-button').disabled = true;
@@ -216,7 +232,7 @@
     const file = new File([pdfBytes], pdfFileName, { type: 'application/pdf' });
     if (navigator.canShare?.({ files: [file] })) {
       try {
-        await navigator.share({ files: [file], title: 'Briefing de casamento' });
+        await navigator.share({ files: [file], title: 'Briefing de evento' });
         shareStatus.textContent = 'Compartilhamento iniciado. Escolham o WhatsApp e confirmem o contato.';
         return;
       } catch (shareError) {

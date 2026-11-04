@@ -42,9 +42,9 @@
   [headers.values]
     Cache-Control = "public, max-age=3600, must-revalidate"
 
-# Link direto para os noivos, fora do menu e da indexação.
+# Link direto para clientes, fora do menu e da indexação.
 [[headers]]
-  for = "/briefing-casamento/*"
+  for = "/briefing-evento/*"
   [headers.values]
     X-Robots-Tag = "noindex, nofollow, noarchive"
     Cache-Control = "private, no-store"

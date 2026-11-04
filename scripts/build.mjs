@@ -1,6 +1,7 @@
 
 import './check.mjs';
 import {readFile,cp,mkdir,writeFile,rm} from 'node:fs/promises';
+import path from 'node:path';
 import {verifyProduction} from './verify-production.mjs';
 
 const data=JSON.parse(await readFile('public/data/portfolio.json','utf8'));
@@ -56,7 +57,10 @@ if(!preview){
   for(const record of [...data.projects,...(data.serviceExamples||[])]){delete record.metadataPending;delete record.sourceFile;}
   delete data.site.showreel.sourceFile;delete data.site.portrait.sourceFile;
 }
-await mkdir('dist',{recursive:true});
+const outputDir=path.resolve('dist');
+if(path.dirname(outputDir)!==path.resolve('.')||path.basename(outputDir)!=='dist')throw new Error('Diretório de build inesperado');
+await rm(outputDir,{recursive:true,force:true});
+await mkdir(outputDir,{recursive:true});
 await cp('public','dist',{recursive:true});
 await writeFile('dist/index.html',html);
 await writeFile('dist/data/portfolio.json',JSON.stringify(data,null,2)+'\n');
