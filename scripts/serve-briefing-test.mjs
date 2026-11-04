@@ -1,4 +1,4 @@
-// Local-only preview of the published page with a simulated SendGrid response.
+// Local-only preview of the published page with a simulated Brevo response.
 import http from 'node:http';
 import { createReadStream } from 'node:fs';
 import { stat } from 'node:fs/promises';
@@ -8,11 +8,11 @@ import submitBriefing from '../netlify/functions/submit-briefing.mjs';
 const root = path.resolve('dist');
 const port = 4175;
 const mime = { '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8', '.js': 'application/javascript; charset=utf-8', '.png': 'image/png' };
-process.env.SENDGRID_API_KEY = 'local-test-only';
-process.env.SENDGRID_SENDER_EMAIL = 'teste@example.com';
+process.env.BREVO_API_KEY = 'local-test-only';
+process.env.BREVO_SENDER_EMAIL = 'teste@example.com';
 globalThis.fetch = async url => {
-  if (url !== 'https://api.sendgrid.com/v3/mail/send') throw new Error('URL inesperada');
-  return new Response(null, { status: 202 });
+  if (url !== 'https://api.brevo.com/v3/smtp/email') throw new Error('URL inesperada');
+  return new Response(JSON.stringify({ messageId: 'local-test' }), { status: 201 });
 };
 
 http.createServer(async (req, res) => {

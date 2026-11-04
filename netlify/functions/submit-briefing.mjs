@@ -25,29 +25,29 @@ export default async function submitBriefing(request) {
     return json(400, { type: 'error' });
   }
 
-  const apiKey = process.env.SENDGRID_API_KEY;
-  const senderEmail = process.env.SENDGRID_SENDER_EMAIL;
+  const apiKey = process.env.BREVO_API_KEY;
+  const senderEmail = process.env.BREVO_SENDER_EMAIL;
   if (!apiKey || !senderEmail) {
-    console.error('Briefing: SendGrid não configurado.');
+    console.error('Briefing: Brevo não configurado.');
     return json(503, { type: 'error' });
   }
 
   try {
     const pdf = await buildBriefingPdf(prepared);
     const pdfBase64 = pdf.toString('base64');
-    const response = await fetch('https://api.sendgrid.com/v3/mail/send', {
+    const response = await fetch('https://api.brevo.com/v3/smtp/email', {
       method: 'POST',
-      headers: { Authorization: `Bearer ${apiKey}`, 'Content-Type': 'application/json' },
+      headers: { 'api-key': apiKey, 'Content-Type': 'application/json', Accept: 'application/json' },
       body: JSON.stringify({
-        personalizations: [{ to: [{ email: RECIPIENT }] }],
-        from: { email: senderEmail },
+        to: [{ email: RECIPIENT }],
+        sender: { email: senderEmail, name: 'deJesus Films' },
         subject: `Briefing de casamento — ${prepared.coupleNames.replace(/\s+/g, ' ')}`,
-        content: [{ type: 'text/plain', value: `Novo briefing de casamento de ${prepared.coupleNames.replace(/\s+/g, ' ')}. O PDF com todas as respostas está em anexo.` }],
-        attachments: [{ content: pdfBase64, type: 'application/pdf', filename: prepared.fileName, disposition: 'attachment' }]
+        textContent: `Novo briefing de casamento de ${prepared.coupleNames.replace(/\s+/g, ' ')}. O PDF com todas as respostas está em anexo.`,
+        attachment: [{ content: pdfBase64, name: prepared.fileName }]
       })
     });
-    if (response.status !== 202) {
-      console.error(`Briefing: SendGrid respondeu HTTP ${response.status}.`);
+    if (response.status !== 201) {
+      console.error(`Briefing: Brevo respondeu HTTP ${response.status}.`);
       return json(502, { type: 'error' });
     }
     return json(200, { type: 'sent', pdfBase64, fileName: prepared.fileName });
