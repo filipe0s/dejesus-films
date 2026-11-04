@@ -11,6 +11,12 @@ Antes de publicar, configurar na interface da Netlify as variáveis abaixo, disp
 - `BREVO_API_KEY`: chave de API do Brevo com permissão de envio transacional.
 - `BREVO_SENDER_EMAIL`: e-mail de remetente verificado no Brevo.
 
+### Ativação
+
+1. Criar uma [conta Brevo](https://www.brevo.com/) e [verificar um remetente](https://help.brevo.com/hc/en-us/articles/208836149-Create-a-new-sender-From-name-and-From-email). Pode ser `dejesusfilms@gmail.com` se o titular conseguir confirmar o código recebido nele. Sem autenticação do domínio, o Brevo pode substituir o endereço de remetente exibido; isso não altera o destinatário do briefing.
+2. Em **Settings → SMTP & API → API Keys & MCP**, [criar uma chave](https://help.brevo.com/hc/en-us/articles/40159485019794-Create-and-manage-your-API-keys) restrita ao recurso **Transactional email: All**. Copiar a chave no momento da criação; ela não pode ser consultada depois.
+3. No projeto do portfólio na Netlify, abrir **Environment variables** e definir `BREVO_API_KEY` e `BREVO_SENDER_EMAIL` com o mesmo e-mail verificado no passo 1. Fazer novo deploy depois de salvar as variáveis.
+
 Não colocar a chave no repositório, em `netlify.toml` ou no JavaScript do navegador. Testar um envio real em um deploy de prévia, confirmar o recebimento em `dejesusfilms@gmail.com` e abrir o PDF. O teste local `npm run test:briefing` simula a resposta do Brevo sem transmitir dados reais.
 
 ## Código
