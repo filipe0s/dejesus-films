@@ -6,7 +6,7 @@ O formulário fica na rota `https://www.fdejesus.com.br/briefing-casamento/`, de
 
 Ao finalizar, o navegador chama a função `netlify/functions/submit-briefing.mjs`. Ela valida as respostas, gera o PDF e envia o anexo via SendGrid para `dejesusfilms@gmail.com`. A tela de sucesso só aparece quando a API de e-mail aceita a mensagem. Depois, o casal pode escolher compartilhar o PDF pelo WhatsApp no menu do aparelho; se o navegador não oferecer compartilhamento de arquivos, o PDF é baixado para anexar manualmente.
 
-Antes de publicar, configurar na Netlify, com escopo **Functions**, as variáveis:
+Antes de publicar, configurar na interface da Netlify as variáveis abaixo, disponíveis para **Functions**. No plano gratuito, o escopo padrão já as inclui; nos planos que permitem escolher escopos, selecionar **Functions**:
 
 - `SENDGRID_API_KEY`: chave SendGrid com permissão de envio.
 - `SENDGRID_SENDER_EMAIL`: e-mail de remetente verificado no SendGrid.
